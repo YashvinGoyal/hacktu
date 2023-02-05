@@ -115,6 +115,7 @@ def choose(request):
     obj.save()
     print("function call ke phele")    
     mlinfo(request)
+    Mail(request)
     # if(sports!="on" and healthandmedicine!="on" and education!="on" and technology!="on" and  entertainment!="on" and tradeandprofessional !="on"):
         # return HttpResponse("ERROR")
     
@@ -167,5 +168,58 @@ def mlinfo(request):
     
     else:
         return HttpResponse("Please select categories")        
+    
+    
+    #this is mail function
+   def Mail(request):
+       import smtplib
+       from email.mime.multipart import MIMEMultipart
+       from email.mime.text import MIMEText
+       from email.mime.base import MIMEBase
+       from email import encoders
+       fromaddr = "predict.io.2k22@gmail.com"
+       toaddr = f"{email}"   
+
+       msg = MIMEMultipart() 
+       msg['From'] = fromaddr
+
+       # storing the receivers email address 
+       msg['To'] = toaddr
+
+       # storing the subject 
+       msg['Subject'] = "Your daily article summary :)"
+
+       # string to store the body of the mail
+       body = f"Hello {users.request}, Here is your daily sports article with its summary, Keep reading : ) {summary}"
+
+       # attach the body with the msg instance
+       msg.attach(MIMEText(body, 'plain'))
+
+       # instance of MIMEBase and named as p
+       p = MIMEBase('application', 'octet-stream')
+
+       # To change the payload into encoded form
+       p.set_payload((attachment).read())
+
+       # encode into base64
+       encoders.encode_base64(p)
+
+       # creates SMTP session
+       s = smtplib.SMTP('smtp.gmail.com', 587)
+
+       # start TLS for security
+       s.starttls()
+
+       # Authentication
+       s.login(fromaddr, "merwuzzcsxlpzjve")
+
+       # Converts the Multipart msg into a string
+       text = msg.as_string()
+
+       # sending the mail
+       s.sendmail(fromaddr, toaddr, text)
+
+       # terminating the session
+       s.quit()
 
            
