@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+   <!-- Google Fonts -->
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+ 
+   <!-- Vendor CSS Files -->
+   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+ 
+   <!-- Template Main CSS File -->
+   <link href="assets/css/style.css" rel="stylesheet">
+ <style>
+   
+  
+  input[type="checkbox"] {
+      position: relative;
+      width: 40px;
+      height: 20px;
+      -webkit-appearance: none;
+      background: #c6c6c6;
+      outline: none;
+      border-radius: 20px;
+      box-shadow: inset 0 0 5px rgba(255, 0, 0, 0.2);
+      transition: 0.7s;
+      margin-left: 20px;
+      margin-top: 12 px;
+  }
+  input:checked[type="checkbox"] {
+    background:  #ffc107;
+  }
+  
+  input[type="checkbox"]:before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    top: 0;
+    left: 0;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: .5s;
+  }
+  
+  input:checked[type="checkbox"]:before {
+    left: 20px;
+  }
+  .block{
+    display: block;
+  }
+ </style>
+</head>
+
+<body>
+   
+   <section id="hero1" class="d-flex align-items-center justify-content-center">
+      <div class="container position-relative">
+        <h1>Welcome to AGPT</h1>
+        <h2>Select the categories</h2>
+        <form action="/categories" method='post'>{% csrf_token %}>
+         <div class="block">
+            <div class="center">
+               <label for="Sports">Sports         : </label>
+               <input type="checkbox" id="Sports" name="Sports"/>
+            </div>
+            <div class="center">
+               <label for="Health">Health and Medicine: </label>
+               <input type="checkbox" id="Health" name="Health"/>
+            </div>
+            <div class="center">
+               <label for="Education">Education: </label>
+               <input type="checkbox" id="Education" name="Education"/>
+            </div>
+            <div class="center">
+               <label for="Technology">Technology: </label>
+               <input type="checkbox" id="Technology" name="Technology"/>
+            </div>
+            <div class="center">
+               <label for="Entertainment">Entertainment: </label>
+               <input type="checkbox" id="Entertainment" name="Entertainment"/>
+            
+            <div class="center">
+               <label for="Trade">Trade and Professional: </label>
+               <input type="checkbox" id="Trade" name="Trade"/>
+            </div>
+            <button type="submit" class="btn btn-dark mt-2">Submit</button>
+            <a href="/">GO Home</a>
+         </div>
+        </form>
+        
+       
+      </div>
+    </section>
+    
+</body>
+</html>
