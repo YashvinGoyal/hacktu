@@ -5,7 +5,10 @@ from home.models import catgories
 from django.contrib import messages
 import json
 import requests
+import transformers
+from transformers import pipeline
 # Create your views here.
+summarizer=pipeline("summarization")
 def home(request):
     return render(request,'home/home.html')
 
@@ -109,7 +112,8 @@ def choose(request):
         obj.tradeandprofessional=True
         obj.save()
     
-    obj.save()    
+    obj.save()
+    print("function call ke phele")    
     mlinfo(request)
     # if(sports!="on" and healthandmedicine!="on" and education!="on" and technology!="on" and  entertainment!="on" and tradeandprofessional !="on"):
         # return HttpResponse("ERROR")
@@ -122,8 +126,27 @@ def mlinfo(request):
     if userr:
         if userr.sports==True:
             sportscon=requests.get('https://newsapi.org/v2/everything?q=sports&from=2023-01-04&sortBy=publishedAt&apiKey=d0d6a37ff82c44eaac677b2062890bcd').json()
-            sportstring=json.dumps(sportscon)
-            print(sportstring)
+            # sportstring=json.dumps(sportscon)
+            print(sportscon)
+            print("hello-------------------")
+            print(type(sportscon))
+            # print(sportstring[1])
+            # print(sportstring[2])
+            # print(sportstring[3])
+            # print(sportstring[4])
+            # print(sportstring[5])
+            
+            for i in range (0,len(sportscon["articles"])):
+                print("number of article",len(sportscon["articles"]))
+                print("for ke andar")
+                conten_t=sportscon["articles"][i]["content"]
+                print("content accessed") 
+                print("length of content", len(conten_t))
+                if (len(conten_t)>100):
+                    print("if ke andar")
+                    summarized=summarizer(conten_t,min_length=101,max_length=150)
+                    print(summarized)        
+                    break
             
             
         if userr.healthandmedicine==True:
@@ -144,5 +167,5 @@ def mlinfo(request):
     
     else:
         return HttpResponse("Please select categories")        
-    
-    
+
+           
