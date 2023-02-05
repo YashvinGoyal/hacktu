@@ -21,9 +21,16 @@
   <link href="static/assets/css/style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="section-title">
+  <section id="contact" class="contact">
+    <div class="container">
+
+      <div class="section-title">
+        {% if user.is_authenticated %}
+        <h2>Welcome {{request.user}}</h2>
+        {% else %}
         <h2>Login</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        {% endif %}
+        <p>To fully experience all the features and benefits that we offer, we encourage you to create an account with us. We look forward to welcoming you as a registered user and providing you with an exceptional experience on our website.</p>
       </div>
 
       <div class="row">
@@ -35,21 +42,21 @@
               <div class="info-box">
                 <i class="bx bx-map"></i>
                 <h3>Our Address</h3>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <p>Thapar Institute of Engineering and Technology, Patiala, Punjab</p>
               </div>
             </div>
             <div class="col-md-6">
               <div class="info-box mt-4">
                 <i class="bx bx-envelope"></i>
                 <h3>Email Us</h3>
-                <p>info@example.com<br>contact@example.com</p>
+                <p>bhavya2k03@gmail.com</p>
               </div>
             </div>
             <div class="col-md-6">
               <div class="info-box mt-4">
                 <i class="bx bx-phone-call"></i>
                 <h3>Call Us</h3>
-                <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+                <p>+91 4457552541<br>+91 9874552143</p>
               </div>
             </div>
           </div>
@@ -60,24 +67,24 @@
           <div class="row">
             
             <div class="col-md-6 form-group mt-3 mt-md-0">
-              <input type="text" class="form-control" name="emaill" id="emaill" placeholder="Your name" required>
+              <input type="text" class="form-control" name="emaill" id="emaill" placeholder="Username" required>
             </div>
-          </div>
-          <div class="form-group mt-3">
-            <input type="text" class="form-control" name="passwordd" id="passwordd" placeholder="Password" required>
+            <div class="col-md-6 form-group mt-3 mt-md-0">
+              <input type="text" class="form-control" name="passwordd" id="passwordd" placeholder="Password" required>
+            </div>
           </div>
           
           
           <div class="my-3">
-            <div class="loading">Loading</div>
+            <div class="loading"></div>
             <div class="error-message"></div>
-            <div class="sent-message">Your message has been sent. Thank you!</div>
+            <div class="sent-message"></div>
           </div>
           
           <div class="text-center">
-            {% csrf_token %}
+            {% csrf_token %}  
             <button type="submit">Submit</button>
-            <a href="/">dont have account</a>
+            <a href="/"><h2>Create New account? ... click here</h2></a>
               </div>
 
         </form>
