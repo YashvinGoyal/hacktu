@@ -18,7 +18,7 @@
    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
  
    <!-- Template Main CSS File -->
-   <link href="assets/css/style.css" rel="stylesheet">
+   <link href="static/assets/css/style.css" rel="stylesheet">
  <style>
    
   
@@ -58,6 +58,21 @@
   .block{
     display: block;
   }
+  #Sports{
+   margin-left: 140px;
+  }
+  #Health{
+   margin-left: 40px;
+  }
+  #Education{
+   margin-left: 120px;
+  }
+  #Technology{
+   margin-left: 110px;
+  }
+  #Entertainment{
+   margin-left: 85px;
+  }
  </style>
 </head>
 
@@ -71,7 +86,7 @@
          <div class="block">
             <div class="center">
                <label for="Sports">Sports         : </label>
-               <input type="checkbox" id="Sports" name="Sports"/>
+               <input type="checkbox" id="Sports" name="Sports" />
             </div>
             <div class="center">
                <label for="Health">Health and Medicine: </label>
@@ -93,7 +108,12 @@
                <label for="Trade">Trade and Professional: </label>
                <input type="checkbox" id="Trade" name="Trade"/>
             </div>
-            <button type="submit" class="btn btn-dark mt-2">Submit</button>
+            <div class="text-center">
+               {% csrf_token %}  
+               <section id="contact" class="contact">
+               <button type="submit">Submit</button>
+               </section>
+                 </div>
             <a href="/">GO Home</a>
          </div>
         </form>
